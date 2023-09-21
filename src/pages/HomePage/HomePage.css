@@ -1,0 +1,82 @@
+.hero-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.hero1 {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    filter: brightness(60%);
+}
+
+.hero1 img {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-dark {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.hero-dark img {
+    flex: 100%;
+    height: 40%;
+    width: 100vw;
+    padding: 0 5rem;
+    object-position: center;
+}
+
+.hero-btn {
+    padding: 0 5rem;
+    margin-top: -10rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-btn .play,
+.more-info {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    border: none;
+    border-radius: 0.2rem;
+}
+
+.hero-btn .more-info {
+    background-color: rgba(90, 90, 90, 0.886);
+    color: var(--color-light);
+}
+
+.hero-btn .play:hover,
+.more-info:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all 0.5s ease;
+}
+
+.hero-icon {
+    font-size: 2rem;
+}
+
+.hero-btn .play:hover .hero-icon,
+.more-info:hover .hero-icon {
+    scale: 1.2;
+    transition: all 0.5s ease;
+}
+

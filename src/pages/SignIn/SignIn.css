@@ -1,0 +1,167 @@
+/* utility class */
+.col-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* end */
+
+.signin-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: black;
+
+}
+
+.login-section1 {
+    width: 100%;
+    min-height: 100vh;
+    background: rgb(0, 0, 0, 0.5);
+
+}
+
+.signin-header {
+    background: linear-gradient(180deg, rgba(0, 0, 0, .5) 0, transparent);
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.logo {
+    width: 90%;
+    margin: auto;
+    padding: 1rem 0;
+}
+
+.logo img {
+    width: 6rem;
+}
+
+.login-form {
+    background: rgb(0, 0, 0, 0.7);
+    color: white;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 80%;
+    margin: 20vmax auto;
+
+}
+
+.login-form .title-form {
+    font-size: 5vw;
+    text-align: start;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.login-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+.form-inputs input {
+    font-size: 1rem;
+    background: #282828;
+    border: none;
+    padding: 1rem;
+    color: white;
+    border-radius: 0.5rem;
+    border-bottom: 3px solid rgb(150, 100, 8, 0);
+}
+
+.form-inputs input:valid {
+    border-bottom: 3px solid rgb(8, 150, 34);
+}
+
+.form-inputs input:autofill {
+    transition-property: background-color, color;
+    transition-delay: 86400s;
+    background-image: none !important;
+}
+
+.login-form form button {
+    padding: 0.7rem 0;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1.2rem;
+    background-color: #ff1c0b;
+    color: white;
+    font-weight: 600;
+}
+
+.login-form form button:hover {
+    cursor: pointer;
+    background-color: #d61306;
+    transition: all 0.3s ease;
+}
+
+.login-message1 {
+    font-size: 0.8rem;
+    text-align: center;
+    font-weight: 500;
+    color: rgb(134, 134, 134);
+}
+
+.login-message1 a {
+    text-decoration: none;
+    color: white;
+}
+
+.login-message1 a:hover,
+.login-message2 span:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.login-message2 {
+    font-size: 0.8rem;
+    text-align: center;
+    font-weight: 500;
+    color: rgb(134, 134, 134);
+}
+
+.login-message2 span {
+    color: white;
+}
+
+/* media querry */
+
+@media only screen and (min-width: 740px) {
+    .signin-section {
+
+        background-image: url("../../assets/netflix-banner.jpg");
+        background-size: cover;
+    }
+
+    .logo img {
+        width: 10vw;
+    }
+
+    .login-form {
+        padding: 60px 68px 40px;
+        margin-top: 10%;
+        max-width: 30rem;
+
+    }
+
+    .login-form .title-form {
+        font-size: 2.5vw;
+        margin-bottom: 0;
+    }
+
+}
+
+/* end */

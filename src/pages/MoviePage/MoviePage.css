@@ -1,0 +1,18 @@
+.movie-dropdown {
+    padding-top: 15vh;
+    padding-left: 5rem;
+}
+
+
+/* medai querry */
+@media screen and (min-width:960px) {
+    .movie-container {
+        padding-top: 20vh;
+    }
+
+    .movie-dropdown {
+        padding-top: 0;
+    }
+}
+
+/* end */
