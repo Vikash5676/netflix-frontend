@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Carousal.css";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const Carousal = ({ category, page, dropVal }) => {
   const [movies, setMovies] = useState([]);
+  const [slides, setSlides] = useState(0);
   useEffect(() => {
     const options = {
       method: "GET",
@@ -289,9 +291,25 @@ const Carousal = ({ category, page, dropVal }) => {
       }
     }
   }, [category, dropVal, page]);
+
+  const slideLeft = () => {
+    if (slides < 0) {
+      setSlides((prev) => prev + 1);
+    }
+  };
+
+  const slideRight = () => {
+    if (slides > -16) {
+      setSlides((prev) => prev - 1);
+    }
+  };
+
   return (
     <div className="carousal">
-      <div className="carousal-container">
+      <div
+        className="carousal-container"
+        style={{ transform: `translateX(${slides * 281}px)` }}
+      >
         {movies?.map((ele) => {
           if (ele.poster_path) {
             return (
@@ -304,6 +322,12 @@ const Carousal = ({ category, page, dropVal }) => {
             );
           }
         })}
+      </div>
+      <div className="left-arrow">
+        <FaChevronLeft onClick={slideLeft} />
+      </div>
+      <div className="right-arrow">
+        <FaChevronRight onClick={slideRight} />
       </div>
     </div>
   );
