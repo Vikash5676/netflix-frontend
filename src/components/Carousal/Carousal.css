@@ -1,7 +1,5 @@
 .carousal {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    box-sizing: border-box;
     position: relative;
 }
 
@@ -10,7 +8,6 @@
     transform: translateX(0px);
     transition: all 0.3s ease-in-out 0s;
     display: flex;
-
     gap: 1rem;
 }
 
@@ -22,12 +19,11 @@
 }
 
 .cards img {
-    max-width: 265px;
-    width: 265px;
-    height: 300px;
+    max-width: 210px;
+    width: 210px;
+    height: 100%;
     border-radius: 0.5rem;
-    object-fit: cover;
-    object-position: center;
+
 }
 
 .left-arrow,
@@ -60,4 +56,75 @@
 .carousal:hover .right-arrow {
     opacity: 1;
     cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.card-video {
+    z-index: 99;
+    height: max-content;
+    width: 20rem;
+    position: absolute;
+    top: -18vh;
+    left: 0px;
+    border-radius: 0.3rem;
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 3px 10px;
+    background-color: rgb(24, 24, 24);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.card-video-container {
+    position: relative;
+    height: 140px;
+}
+
+.video-info {
+    background-color: #282828;
+    margin-top: -5px;
+    color: var(--color-light);
+    border-bottom-left-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+}
+
+.video-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: -0.2rem;
+    padding: 1rem;
+
+}
+
+.video-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.video-icons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.video-controls {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+
+}
+
+.video-icons svg {
+    transition: color 0.3s ease;
+}
+
+.video-icons svg:hover {
+    color: rgb(181, 181, 181);
+
+}
+
+.video-info {
+    font-size: 1.1rem;
+}
+
+.video-geners {
+    display: flex;
+    gap: 1.7rem;
+    overflow: hidden;
 }

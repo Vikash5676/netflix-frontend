@@ -1,11 +1,27 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Carousal.css";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import {
+  FaChevronDown,
+  FaChevronLeft,
+  FaChevronRight,
+  FaPlayCircle,
+} from "react-icons/fa";
+import {
+  BiSolidLike,
+  BiSolidDislike,
+  BiDownArrow,
+  BiSortDown,
+} from "react-icons/bi";
+import { IoMdAdd } from "react-icons/io";
+import GenerList from "../../GenerList";
 
 const Carousal = ({ category, page, dropVal }) => {
   const [movies, setMovies] = useState([]);
   const [slides, setSlides] = useState(0);
+  const [videoKey, setVideoKey] = useState("");
+  const [id, setId] = useState();
+  const [newGener, setNewGener] = useState([]);
   useEffect(() => {
     const options = {
       method: "GET",
@@ -22,7 +38,6 @@ const Carousal = ({ category, page, dropVal }) => {
             options
           )
           .then((res) => {
-            console.log(res.data);
             setMovies(res.data.results);
           });
       } else if (category === "New Releases") {
@@ -32,7 +47,6 @@ const Carousal = ({ category, page, dropVal }) => {
             options
           )
           .then((res) => {
-            console.log(res.data);
             setMovies(res.data.results);
           });
       } else if (category === "Blockbuster Movies") {
@@ -42,7 +56,6 @@ const Carousal = ({ category, page, dropVal }) => {
             options
           )
           .then((res) => {
-            console.log(res.data);
             setMovies(res.data.results);
           });
       } else if (category === "Popular On Netflix") {
@@ -52,7 +65,6 @@ const Carousal = ({ category, page, dropVal }) => {
             options
           )
           .then((res) => {
-            console.log(res.data);
             setMovies(res.data.results);
           });
       } else if (category === "Action Movies") {
@@ -62,7 +74,6 @@ const Carousal = ({ category, page, dropVal }) => {
             options
           )
           .then((res) => {
-            console.log(res.data);
             setMovies(res.data.results);
           });
       } else if (category === "Popular Tv Shows") {
@@ -72,7 +83,6 @@ const Carousal = ({ category, page, dropVal }) => {
             options
           )
           .then((res) => {
-            console.log(res.data);
             setMovies(res.data.results);
           });
       }
@@ -85,7 +95,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "Arriving Today") {
@@ -95,7 +104,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "Most Trending") {
@@ -105,7 +113,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "Top Rated") {
@@ -115,7 +122,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "upcomming Tv Shows") {
@@ -125,7 +131,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         }
@@ -137,7 +142,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "Arriving Today") {
@@ -147,7 +151,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "Most Trending") {
@@ -157,7 +160,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "Top Rated") {
@@ -167,7 +169,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "upcomming Tv Shows") {
@@ -177,7 +178,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         }
@@ -192,7 +192,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "upcomming Movies") {
@@ -202,7 +201,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "Now Playing") {
@@ -212,7 +210,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "Most Trending") {
@@ -222,7 +219,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "Top Rated") {
@@ -232,7 +228,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         }
@@ -244,7 +239,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "upcomming Movies") {
@@ -254,7 +248,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "Now Playing") {
@@ -264,7 +257,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "Most Trending") {
@@ -274,7 +266,6 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         } else if (category === "Top Rated") {
@@ -284,13 +275,16 @@ const Carousal = ({ category, page, dropVal }) => {
               options
             )
             .then((res) => {
-              console.log(res.data);
               setMovies(res.data.results);
             });
         }
       }
     }
   }, [category, dropVal, page]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [page]);
 
   const slideLeft = () => {
     if (slides < 0) {
@@ -299,8 +293,74 @@ const Carousal = ({ category, page, dropVal }) => {
   };
 
   const slideRight = () => {
-    if (slides > -16) {
+    if (slides > -15) {
       setSlides((prev) => prev - 1);
+    }
+  };
+
+  const handleMouse = async (idx, ele, categ) => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.REACT_APP_MOVIE_DB_TOKEN}`,
+      },
+    };
+
+    if (page === "home") {
+      setId(`${ele.id}-${idx}`);
+      if (categ !== "Popular Tv Shows") {
+        axios
+          .get(
+            `${process.env.REACT_APP_MOVIE_BASE_URL}/3/movie/${ele.id}/videos?language=en-US`,
+            options
+          )
+          .then((res) => {
+            res.data?.results?.map((ele) => {
+              setVideoKey(ele.key ? ele.key : "");
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+
+        const gener = await GenerList(ele.genre_ids);
+        setNewGener(gener);
+      } else {
+        setId("");
+        axios
+          .get(
+            `${process.env.REACT_APP_MOVIE_BASE_URL}/3/tv/${ele.id}/videos?language=en-US`,
+            options
+          )
+          .then((res) => {
+            res.data?.results?.map((ele) => {
+              setVideoKey(ele.key);
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    } else if (page === "tv") {
+      setId("");
+    } else if (page === "movie") {
+      setId(`${ele.id}-${idx}`);
+      axios
+        .get(
+          `${process.env.REACT_APP_MOVIE_BASE_URL}/3/movie/${ele.id}/videos?language=en-US`,
+          options
+        )
+        .then((res) => {
+          res.data?.results?.map((ele) => {
+            setVideoKey(ele.key ? ele.key : "");
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      const gener = await GenerList(ele.genre_ids);
+      setNewGener(gener);
     }
   };
 
@@ -308,16 +368,68 @@ const Carousal = ({ category, page, dropVal }) => {
     <div className="carousal">
       <div
         className="carousal-container"
-        style={{ transform: `translateX(${slides * 281}px)` }}
+        style={{ transform: `translateX(${slides * 226}px)` }}
       >
-        {movies?.map((ele) => {
-          if (ele.poster_path) {
+        {movies?.map((ele, idx) => {
+          if (ele.backdrop_path) {
             return (
-              <div className="cards">
+              <div
+                className="cards"
+                onMouseOver={() => {
+                  handleMouse(idx, ele, category);
+                }}
+                onMouseLeave={() => {
+                  setId("");
+                }}
+              >
                 <img
-                  src={`${process.env.REACT_APP_TMDB_IMAGE_URL}${ele.poster_path}`}
+                  src={`${process.env.REACT_APP_TMDB_IMAGE_URL}${ele.backdrop_path}`}
                   alt={ele.original_title}
                 />
+                {`${ele.id}-${idx}` === id ? (
+                  <div className="card-video">
+                    <div className="card-video-container">
+                      <iframe
+                        type="text/html"
+                        style={{ backgroundColor: "#000", width: "100%" }}
+                        src={`//www.youtube.com/embed/${videoKey}?autoplay=1&amp;origin=https%3A%2F%2Fwww.themoviedb.org&amp;hl=en&amp;modestbranding=1&amp;fs=1&amp;autohide=1`}
+                        frameborder="0"
+                        allowfullscreen="1"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        title={ele.original_title}
+                        width="100%"
+                        height="100%"
+                      />
+                      <div className="video-info">
+                        <div className="video-info-container">
+                          <h3 className="video-title">
+                            {!ele.original_title
+                              ? ele.name
+                              : ele.original_title}
+                          </h3>
+                          <div className="video-icons">
+                            <div className="video-controls">
+                              <FaPlayCircle />
+                              <BiSolidLike />
+                              <BiSolidDislike />
+                              <IoMdAdd />
+                            </div>
+                            <div className="video-info">
+                              <FaChevronDown />
+                            </div>
+                          </div>
+                          <ul className="video-geners">
+                            {newGener.map((ele) => (
+                              <li>{ele}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             );
           }

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import verifyToken from './verifyToken'
 import Navbar from './components/Navbar/Navbar';
 
-function Protected({ component }) {
+function Protected({ component, setSearched }) {
     const [scroll, setScroll] = useState(0);
 
     const navigate = useNavigate()
@@ -35,7 +35,7 @@ function Protected({ component }) {
     }, []);
 
     return (
-        < ><Navbar scroll={scroll} />{component}</>
+        < ><Navbar scroll={scroll} setSearched={setSearched} />{component}</>
     )
 }
 

@@ -18,11 +18,9 @@ const TvPage = () => {
   useEffect(() => {
     const options = {
       method: "GET",
-
       headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZjRjYTBiMzU0NzNjYWRiZWQ4MDZjYmU2NGEzMDUzOSIsInN1YiI6IjY1MDgwODc3ZmEyN2Y0MDEwYzRiMjNmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.dzslG0osfAjmJblAVS9ddKou3XQSdkBpmYyw6BXaZXo",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.REACT_APP_MOVIE_DB_TOKEN}`,
       },
     };
 
@@ -44,8 +42,7 @@ const TvPage = () => {
     <div className="tv-container">
       <div className="tv-dropdown">
         <Dropdown
-          placeholder="State"
-          search
+          placeholder="Select Gener"
           selection
           options={options}
           style={{
