@@ -8,6 +8,8 @@ async function verifyToken(token) {
         body: JSON.stringify({ token: token })
     })
 
+
+
     return await verified.json()
 }
 

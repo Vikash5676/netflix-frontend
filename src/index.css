@@ -22,3 +22,35 @@ body {
   background-color: var(--bg-dark);
 
 }
+
+.colored-toast.swal2-icon-success {
+  background-color: #49792e !important;
+}
+
+.colored-toast.swal2-icon-error {
+  background-color: #cb3737 !important;
+}
+
+.colored-toast.swal2-icon-warning {
+  background-color: #b09f3d !important;
+}
+
+.colored-toast.swal2-icon-info {
+  background-color: #196c88 !important;
+}
+
+.colored-toast.swal2-icon-question {
+  background-color: #536871 !important;
+}
+
+.colored-toast .swal2-title {
+  color: white;
+}
+
+.colored-toast .swal2-close {
+  color: white;
+}
+
+.colored-toast .swal2-html-container {
+  color: white;
+}

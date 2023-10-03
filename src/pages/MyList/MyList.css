@@ -1,0 +1,21 @@
+.list-section {
+    min-height: 100vh;
+}
+
+.list-container {
+    
+    padding: 150px 5rem;
+    justify-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+@media screen and (max-width:530px) {
+    .list-container {
+        padding: 100px 5rem;
+        justify-content: center;
+
+    }
+}

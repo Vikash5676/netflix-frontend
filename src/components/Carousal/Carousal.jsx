@@ -7,14 +7,11 @@ import {
   FaChevronRight,
   FaPlayCircle,
 } from "react-icons/fa";
-import {
-  BiSolidLike,
-  BiSolidDislike,
-  BiDownArrow,
-  BiSortDown,
-} from "react-icons/bi";
+import { BiSolidLike, BiSolidDislike } from "react-icons/bi";
 import { IoMdAdd } from "react-icons/io";
 import GenerList from "../../GenerList";
+import verifyToken from "../../verifyToken";
+import Swal from "sweetalert2";
 
 const Carousal = ({ category, page, dropVal }) => {
   const [movies, setMovies] = useState([]);
@@ -22,6 +19,20 @@ const Carousal = ({ category, page, dropVal }) => {
   const [videoKey, setVideoKey] = useState("");
   const [id, setId] = useState();
   const [newGener, setNewGener] = useState([]);
+  const [user, setUser] = useState();
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-right",
+    iconColor: "white",
+    customClass: {
+      popup: "colored-toast",
+    },
+    showConfirmButton: false,
+    timer: 1500,
+    timerProgressBar: true,
+  });
+
   useEffect(() => {
     const options = {
       method: "GET",
@@ -286,6 +297,17 @@ const Carousal = ({ category, page, dropVal }) => {
     window.scrollTo(0, 0);
   }, [page]);
 
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      verifyToken(token).then((res) => {
+        if (res.message) {
+          setUser(res.user);
+        }
+      });
+    }
+  }, []);
+
   const slideLeft = () => {
     if (slides < 0) {
       setSlides((prev) => prev + 1);
@@ -364,6 +386,33 @@ const Carousal = ({ category, page, dropVal }) => {
     }
   };
 
+  const handleAddMovie = (ele) => {
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}/api/mylist/add-movie`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: user,
+          movie_id: ele.id,
+          backdrop_path: ele.backdrop_path,
+          title: ele.original_title ? ele.original_title : ele.name,
+        }),
+      })
+      .then((res) => {
+        if (res.data.execution) {
+          Toast.fire({ icon: "success", title: res.data.message });
+        } else {
+          Toast.fire({ icon: "warning", title: res.data.message });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        Toast.fire({ icon: "error", title: "something went wrong" });
+      });
+  };
+
   return (
     <div className="carousal">
       <div
@@ -412,7 +461,11 @@ const Carousal = ({ category, page, dropVal }) => {
                               <FaPlayCircle />
                               <BiSolidLike />
                               <BiSolidDislike />
-                              <IoMdAdd />
+                              <IoMdAdd
+                                onClick={() => {
+                                  handleAddMovie(ele);
+                                }}
+                              />
                             </div>
                             <div className="video-info">
                               <FaChevronDown />
